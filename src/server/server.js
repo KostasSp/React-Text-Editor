@@ -7,7 +7,8 @@ const io = require("socket.io")(3001, {
 
 io.on("connection", (socket) => {
   socket.on("send-change", (delta) => {
-    console.log(delta);
+    //broadcasting to all client instances
+    socket.broadcast.emit("receive-change", delta);
   });
   console.log("connected");
 });
